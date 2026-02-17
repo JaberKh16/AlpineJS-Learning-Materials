@@ -1,0 +1,17 @@
+{
+  "name": "2.dropdown-setup",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "live-dev": "live-server --port=3000",
+    "dev": "npm run live-dev"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "description": "",
+  "dependencies": {
+    "alpinejs": "^3.15.8"
+  }
+}

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Preview Setup</title>
+    <!-- tailwind cdn link  -->
+    <link rel="stylesheet" href="https://unpkg.com/tailwindcss@1.2.0/dist/tailwind.min.css">
+    <!-- setup th script -->
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v1.9.8/dist/alpine.js" defer></script>
+</head>
+<body>
+    <div x-data="{ image: null }">
+        <input type="file" @change="image = URL.createObjectURL($event.target.files[0])">
+        <template x-if="image">
+            <img :src="image" class="w-64 h-64 object-cover mt-4">
+        </template>
+    </div>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dropdown Setup</title>
+</head>
+<body>
+    <div x-data="{ isOpen: false }">
+        <button @click="isOpen = !isOpen">Toggle Dropdown</button>
+        <div x-show="isOpen" @click.outside="isOpen=false" class="dropdown-menu abosulute bg-white border mt-2 shadow-lg">
+            <a href="#">Option 1</a>
+            <a href="#">Option 2</a>
+            <a href="#">Option 3</a>
+        </div>
+    </div>
+
+    <!-- setup the script -->
+    <script src="./scripts/index.js"></script>
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>State Variables</title>
+    <!-- tailwind cdn link  -->
+    <link rel="stylesheet" href="https://unpkg.com/tailwindcss@1.2.0/dist/tailwind.min.css">
+    <!-- setup th script -->
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v1.9.8/dist/alpine.js" defer></script>
+
+    <!-- setup axios cdn -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <style>
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .col-md-6 {
+            flex: 1 1 calc(50% - 20px);
+        }
+
+        @media (max-width: 768px) {
+            .col-md-6 {
+                flex: 1 1 100%;
+            }
+        }
+
+        [x-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" >
+        <h1 class="text-2xl font-bold">State Variables</h1>
+        <p class="text-gray-600">State variables are the variables that we define in the x-data directive. T
+            hey are used to store the state of the component and can be accessed and modified using the x-text, x-show, x-bind, and other directives.</p> 
+        
+        <div class="row flex flex-col md:flex-row border border-gray-300 rounded p-20 mt-4 w-50">
+            <!-- x-data, x-text via same html -->
+            <div class="col-md-3">
+                <h2 class="text-xl font-bold">Example 1</h2>
+                <div x-data="{ name: 'alpinejs', count: 0 }">
+                    <h1>Greeting, <span x-text="name"></span></h1>
+                    <p>Current value is: <span x-text="count"></span></p>
+                    <button x-on:click="count++" class="bg-blue-700 text-2xl text-white p-1 rounded">1+</button>
+                    <button x-on:click="count--" class="bg-blue-700 text-2xl text-white p-1 rounded">-1</button>
+                </div>
+            </div>
+            <!-- x-data, x-text with external script -->
+            <div class="border border-black-800 p-20 m-20"></div>
+            <div class="col-md-3">
+                <h2 class="text-xl font-bold">Example 2</h2>
+                <div x-data="stateVariables">
+                    <h1>Greeting, <span x-text="name"></span></h1>
+                    <p>Current value is: <span x-text="count"></span></p>
+                    <button x-on:click="count++" class="bg-blue-700 text-2xl text-white p-1 rounded">1+</button>
+                    <button x-on:click="count--" class="bg-blue-700 text-2xl text-white p-1 rounded">-1</button>
+                    <button type="button" @click="logCount()"></button>
+                </div>
+            </div>
+
+            <!-- x-if directive  -->
+            <div class="col-md-3">
+                <h2 class="text-xl font-bold">Example 3</h2>
+                <div x-data="{ show: true }">
+                    <button @click="show = !show" class="bg-blue-700 text-white px-4 py-3 mt-4 text-sm rounded">
+                        Toggle Content
+                    </button>
+                    <template x-if="show">
+                        <p class="mt-4">This content is conditionally rendered based on the value of the 'show' state variable. Click the button to toggle its visibility.</p>
+                    </template>
+                </div>
+            </div>
+
+            <!-- x-for directive -->
+            <div class="col-md-6">
+                <h2 class="text-xl font-bold">Example 3</h2>
+                <div x-data="{ posts: [
+                    { id: 1, title: 'Post 1' },
+                    { id: 2, title: 'Post 2' },
+                    { id: 3, title: 'Post 3' }
+                    ]}">
+                    <template x-for="post in posts" :key="post.id">
+                        <div class="border border-gray-300 rounded p-4 mb-4">
+                            <h3 class="text-lg font-bold" x-text="post.title"></h3>
+                        </div>
+                    </template>
+                </div>
+            </div>
+
+            <!-- x-effect directive -->
+            <div class="col-md-3">
+                <h2 class="text-xl font-bold">Example 4</h2>
+                <div x-data="{ count: 0 }" x-effect="console.log('Count changed:', count)">
+                    <p>Current value is: <span x-text="count"></span></p>
+                    <button x-on:click="count++" class="bg-blue-700 text-2xl text-white p-1 rounded">1+</button>
+                    <button x-on:click="count--" class="bg-blue-700 text-2xl text-white p-1 rounded">-1</button>
+                </div>
+            </div>
+
+            <!-- x-bind directive -->
+            <div class="col-md-3">
+                <h2 class="text-xl font-bold">Example 5</h2>
+                <div x-data="{ isActive: false }">
+                    <button @click="isActive = !isActive" class="bg-blue-700 text-white px-4 py-3 mt-4 text-sm rounded">
+                        Toggle Active State
+                    </button>
+                    <p :class="{ isActive ? 'text-green-500' : 'text-red-500' }" class="mt-4">
+                        The text color changes based on the active state.
+                    </p>
+                </div>
+            </div>
+
+            <!-- x-ref directive -->
+            <div class="col-md-3">
+                <h2 class="text-xl font-bold">Example 6</h2>
+                <div x-data="{ inputValue: '' }">
+                    <input x-ref="input" type="text" placeholder="Type something..." class="border border-gray-300 rounded p-2">
+                    <button @click="inputValue = $refs.input.value" class="bg-blue-700 text-white px-4 py-3 mt-4 text-sm rounded">
+                        Get Input Value
+                    </button>
+                    <p class="mt-4">You typed: <span x-text="inputValue"></span></p>
+                </div>
+            </div>
+
+            <!-- x-html -->
+            <div class="col-md-3">
+                <h2 class="text-xl font-bold">Example 7</h2>
+                <div x-data="{ htmlContent: '<strong>This is bold text</strong>' }">
+                    <p x-html="htmlContent" class="mt-4"></p>
+                </div>
+                <div x-html="(await axios.get('./partials/partial.html')).data" class="mt-4"></div>
+            </div>
+
+        </div>
+    </div>
+    
+
+    <!-- setup the external script -->
+    <script src="./scripts/index.js"></script>
+    
+</body>
+</html>
