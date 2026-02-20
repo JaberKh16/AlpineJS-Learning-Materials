@@ -1,0 +1,9 @@
+<!-- x-effect directive -->
+<div class="col-md-3">
+    <h2 class="text-xl font-bold">Example 4</h2>
+    <div x-data="{ count: 0 }" x-effect="console.log('Count changed:', count)">
+        <p>Current value is: <span x-text="count"></span></p>
+        <button x-on:click="count++" class="bg-blue-700 text-2xl text-white p-1 rounded">1+</button>
+        <button x-on:click="count--" class="bg-blue-700 text-2xl text-white p-1 rounded">-1</button>
+    </div>
+</div>

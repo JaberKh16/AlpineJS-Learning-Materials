@@ -1,0 +1,11 @@
+<!-- x-ref directive -->
+<div class="col-md-3">
+    <h2 class="text-xl font-bold">Example 6</h2>
+    <div x-data="{ inputValue: '' }">
+        <input x-ref="input" type="text" placeholder="Type something..." class="border border-gray-300 rounded p-2">
+        <button @click="inputValue = $refs.input.value" class="bg-blue-700 text-white px-4 py-3 mt-4 text-sm rounded">
+            Get Input Value
+        </button>
+        <p class="mt-4">You typed: <span x-text="inputValue"></span></p>
+    </div>
+</div>

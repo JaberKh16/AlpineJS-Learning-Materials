@@ -1,0 +1,8 @@
+<!-- x-html -->
+<div class="col-md-3">
+    <h2 class="text-xl font-bold">Example 7</h2>
+    <div x-data="{ htmlContent: '<strong>This is bold text</strong>' }">
+        <p x-html="htmlContent" class="mt-4"></p>
+    </div>
+    <div x-html="(await axios.get('./partials/partial.html')).data" class="mt-4"></div>
+</div>

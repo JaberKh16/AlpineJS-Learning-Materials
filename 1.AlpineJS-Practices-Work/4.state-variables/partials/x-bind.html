@@ -1,0 +1,12 @@
+<!-- x-bind directive -->
+<div class="col-md-3">
+    <h2 class="text-xl font-bold">Example 5</h2>
+    <div x-data="{ isActive: false }">
+        <button @click="isActive = !isActive" class="bg-blue-700 text-white px-4 py-3 mt-4 text-sm rounded">
+            Toggle Active State
+        </button>
+        <p :class="{ isActive ? 'text-green-500' : 'text-red-500' }" class="mt-4">
+            The text color changes based on the active state.
+        </p>
+    </div>
+</div>

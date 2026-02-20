@@ -1,0 +1,15 @@
+<!-- x-for directive -->
+<div class="col-md-6">
+    <h2 class="text-xl font-bold">Example 3</h2>
+    <div x-data="{ posts: [
+        { id: 1, title: 'Post 1' },
+        { id: 2, title: 'Post 2' },
+        { id: 3, title: 'Post 3' }
+        ]}">
+        <template x-for="post in posts" :key="post.id">
+            <div class="border border-gray-300 rounded p-4 mb-4">
+                <h3 class="text-lg font-bold" x-text="post.title"></h3>
+            </div>
+        </template>
+    </div>
+</div>

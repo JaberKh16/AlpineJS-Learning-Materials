@@ -1,0 +1,12 @@
+<!-- x-if directive  -->
+<div class="col-md-3">
+    <h2 class="text-xl font-bold">Example 3</h2>
+    <div x-data="{ show: true }">
+        <button @click="show = !show" class="bg-blue-700 text-white px-4 py-3 mt-4 text-sm rounded">
+            Toggle Content
+        </button>
+        <template x-if="show">
+            <p class="mt-4">This content is conditionally rendered based on the value of the 'show' state variable. Click the button to toggle its visibility.</p>
+        </template>
+    </div>
+</div>

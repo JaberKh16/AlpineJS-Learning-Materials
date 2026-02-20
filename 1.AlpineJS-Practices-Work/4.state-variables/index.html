@@ -99,49 +99,7 @@
                 </div>
             </div>
 
-            <!-- x-effect directive -->
-            <div class="col-md-3">
-                <h2 class="text-xl font-bold">Example 4</h2>
-                <div x-data="{ count: 0 }" x-effect="console.log('Count changed:', count)">
-                    <p>Current value is: <span x-text="count"></span></p>
-                    <button x-on:click="count++" class="bg-blue-700 text-2xl text-white p-1 rounded">1+</button>
-                    <button x-on:click="count--" class="bg-blue-700 text-2xl text-white p-1 rounded">-1</button>
-                </div>
-            </div>
-
-            <!-- x-bind directive -->
-            <div class="col-md-3">
-                <h2 class="text-xl font-bold">Example 5</h2>
-                <div x-data="{ isActive: false }">
-                    <button @click="isActive = !isActive" class="bg-blue-700 text-white px-4 py-3 mt-4 text-sm rounded">
-                        Toggle Active State
-                    </button>
-                    <p :class="{ isActive ? 'text-green-500' : 'text-red-500' }" class="mt-4">
-                        The text color changes based on the active state.
-                    </p>
-                </div>
-            </div>
-
-            <!-- x-ref directive -->
-            <div class="col-md-3">
-                <h2 class="text-xl font-bold">Example 6</h2>
-                <div x-data="{ inputValue: '' }">
-                    <input x-ref="input" type="text" placeholder="Type something..." class="border border-gray-300 rounded p-2">
-                    <button @click="inputValue = $refs.input.value" class="bg-blue-700 text-white px-4 py-3 mt-4 text-sm rounded">
-                        Get Input Value
-                    </button>
-                    <p class="mt-4">You typed: <span x-text="inputValue"></span></p>
-                </div>
-            </div>
-
-            <!-- x-html -->
-            <div class="col-md-3">
-                <h2 class="text-xl font-bold">Example 7</h2>
-                <div x-data="{ htmlContent: '<strong>This is bold text</strong>' }">
-                    <p x-html="htmlContent" class="mt-4"></p>
-                </div>
-                <div x-html="(await axios.get('./partials/partial.html')).data" class="mt-4"></div>
-            </div>
+        
 
         </div>
     </div>
